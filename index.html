@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <title>ระบบสร้างข้อสอบด้วย AI โรงเรียนจ่าอากาศ</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <h1><i class="fas fa-graduation-cap"></i> ระบบสร้างข้อสอบด้วย AI โรงเรียนจ่าอากาศ</h1>
+        
+        <div class="input-section">
+            <label for="subject">วิชา:<span class="required">*</span></label>
+            <input type="text" id="subject" placeholder="เช่น คณิตศาสตร์" required>
+            
+            <label for="grade">ระดับความยาก:<span class="required">*</span></label>
+            <select id="grade" required>
+                <option value="">เลือกระดับความยาก</option>
+                <option value="easy">ง่าย</option>
+                <option value="medium">ปานกลาง</option>
+                <option value="hard">ยาก</option>
+            </select>
+            
+            <label for="questionCount">จำนวนข้อ:<span class="required">*</span></label>
+            <div class="input-group">
+                <input type="number" id="questionCount" min="1" max="1000" value="5" required>
+                <div id="questionCountError" class="error-message hidden"></div>
+            </div>
+            
+            <div class="button-container">
+                <button onclick="generateExam()" id="generateBtn" class="primary-button">
+                    <i class="fas fa-magic"></i> สร้างข้อสอบ
+                </button>
+            </div>
+        </div>
+
+        <div id="loadingSpinner" class="loading-spinner hidden">
+            <i class="fas fa-spinner fa-spin"></i>
+            <p>กำลังสร้างข้อสอบ...</p>
+        </div>
+
+        <div id="examResult" class="exam-result">
+            <!-- ข้อสอบจะถูกแสดงที่นี่ -->
+        </div>
+        
+        <div id="examControls" class="exam-controls hidden">
+            <button onclick="submitExam()" id="submitBtn" class="submit-btn">
+                <i class="fas fa-check-circle"></i> ส่งคำตอบ
+            </button>
+            <button onclick="resetExam()" id="resetBtn" class="reset-btn">
+                <i class="fas fa-redo"></i> ทำข้อสอบใหม่
+            </button>
+            <button onclick="printExam()" id="printBtn" class="print-btn">
+                <i class="fas fa-print"></i> พิมพ์ข้อสอบ
+            </button>
+        </div>
+
+        <div id="scoreResult" class="score-result hidden">
+            <h2>ผลคะแนน</h2>
+            <div id="scoreDisplay">
+                <div class="score-details">
+                    <p>คะแนนที่ได้: <span id="correctScore">0</span>/<span id="totalQuestions">0</span></p>
+                    <p>เปอร์เซ็นต์: <span id="scorePercentage">0</span>%</p>
+                </div>
+            </div>
+            <button onclick="showAnswers()" class="show-answers-btn">
+                <i class="fas fa-eye"></i> ดูเฉลย
+            </button>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
