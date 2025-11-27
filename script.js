@@ -1,5 +1,5 @@
 // ต้องใส่ API Key ของ Gemini ที่นี่
-const API_KEY = 'AIzaSyA0tXh-DKwR-d9O1WzCVnGD4vQ7rpmgkr4';
+const API_KEY = 'AIzaSyCWq_N4Eq6vhWZj8FvyvTL6RZ1CfoAlBO0';
 const API_URL = 'https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent';
 
 function validateQuestionCount() {
